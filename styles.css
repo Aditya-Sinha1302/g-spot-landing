@@ -288,36 +288,55 @@ nav {
   font-size: 1.25rem;
 }
 
+/* Card Actions - "Get on WhatsApp" Button */
+.card-actions {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.outline-wa-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.outline-wa-btn:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 15px var(--accent-color);
+  transform: translateY(-2px);
+}
+
 /* Tags */
 .tag {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.5rem; /* Moved from right to left */
+  left: 1.5rem; /* Moved top-left per instruction */
   padding: 0.5rem 1rem;
   font-family: var(--font-heading);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   z-index: 10;
   text-transform: uppercase;
-  border: 2px solid var(--text-color);
+  border: 1px solid var(--text-color);
 }
 
-.tag.sold-out {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  border-color: var(--accent-color);
-  text-shadow: 0 0 5px var(--accent-color);
-  box-shadow: 0 0 10px rgba(184, 41, 255, 0.5);
-}
-
-.tag.limited {
-  background-color: var(--accent-color);
-  color: var(--text-color);
+.tag.back-in-stock {
+  background-color: var(--text-color);
+  color: var(--bg-color);
   border-color: var(--text-color);
-  text-shadow: 0 0 5px rgba(255,255,255,0.5);
-  box-shadow: 0 0 10px rgba(184, 41, 255, 0.8);
+  font-weight: 800;
+  box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.2);
 }
 
-.tag.new-drop {
+.tag.limited-edition {
   background-color: transparent;
   color: var(--accent-color);
   border-color: var(--accent-color);
@@ -487,10 +506,108 @@ nav {
   }
 }
 
+/* Instagram Feed Section */
+.ig-feed {
+  padding: 6rem 1.5rem;
+  text-align: center;
+}
+
+.ig-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .ig-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.ig-placeholder {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: #111;
+  border: var(--brutalist-border);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.ig-placeholder:hover {
+  transform: scale(1.05);
+  border-color: var(--accent-color);
+}
+
+/* Simple IG icon using CSS shapes for the placeholder */
+.ig-placeholder::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+}
+
+.ig-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border: 3px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+}
+
+.ig-follow-btn {
+  display: inline-block;
+  padding: 1.25rem 2.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--text-color);
+  background-color: transparent;
+  border: 2px solid var(--text-color);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.ig-follow-btn:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  box-shadow: var(--box-shadow);
+  transform: translate(-4px, -4px);
+}
+
 /* Footer Boilerplate */
 footer {
   padding: 4rem 1.5rem 8rem 1.5rem;
   border-top: var(--brutalist-border);
   text-align: center;
   font-weight: 600;
+}
+
+.footer-address {
+  font-size: 1.1rem;
+  color: #CCC;
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.maps-link {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 800;
+  transition: color 0.3s;
+}
+
+.maps-link:hover {
+  color: var(--accent-hover);
 }
