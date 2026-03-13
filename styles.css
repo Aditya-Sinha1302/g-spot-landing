@@ -66,6 +66,27 @@ h1, h2, h3, h4, .heading-font {
   transform: translateY(0) scale(1);
 }
 
+/* Countdown Banner */
+.countdown-banner {
+  background: linear-gradient(90deg, #1A0033 0%, var(--accent-color) 50%, #1A0033 100%);
+  color: var(--text-color);
+  text-align: center;
+  padding: 0.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1000;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--accent-hover);
+}
+
+#countdown-timer {
+  color: #fff;
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
 /* Navigation */
 nav {
   padding: 1.5rem;
@@ -216,8 +237,33 @@ nav {
 }
 
 .drop-card:hover img {
-  transform: scale(1.08);
+  transform: scale(1.05); /* Slightly less aggressive zoom per user request */
   filter: contrast(1.15) brightness(1.05);
+}
+
+.hover-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(5, 5, 5, 0.8);
+  color: var(--text-color);
+  padding: 0.8rem 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  border: 1px solid var(--accent-color);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+  z-index: 5;
+}
+
+.drop-card:hover .hover-btn {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
 .drop-info {
@@ -255,19 +301,61 @@ nav {
 .tag.sold-out {
   background-color: var(--bg-color);
   color: var(--text-color);
+  border-color: var(--accent-color);
+  text-shadow: 0 0 5px var(--accent-color);
+  box-shadow: 0 0 10px rgba(184, 41, 255, 0.5);
 }
 
 .tag.limited {
   background-color: var(--accent-color);
-  color: var(--bg-color);
+  color: var(--text-color);
   border-color: var(--text-color);
+  text-shadow: 0 0 5px rgba(255,255,255,0.5);
+  box-shadow: 0 0 10px rgba(184, 41, 255, 0.8);
+}
+
+.tag.new-drop {
+  background-color: transparent;
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  text-shadow: 0 0 8px var(--accent-color);
+  box-shadow: inset 0 0 10px rgba(184, 41, 255, 0.3), 0 0 10px rgba(184, 41, 255, 0.3);
+}
+
+/* Floating WhatsApp CTA */
+.whatsapp-cta {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #25D366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 1001;
+  animation: pulse 2s infinite;
+  transition: transform 0.3s;
+}
+
+.whatsapp-cta:hover {
+  transform: scale(1.1);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
 /* Notify Me Sticky Button */
 .sticky-notify {
   position: fixed;
   bottom: 2rem;
-  right: 2rem;
+  right: calc(2rem + 80px); /* adjusted left of whatsapp */
   background-color: var(--accent-color);
   color: var(--bg-color);
   font-family: var(--font-heading);
@@ -293,11 +381,17 @@ nav {
 }
 
 @media (max-width: 768px) {
+  .whatsapp-cta {
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+  }
   .sticky-notify {
     bottom: 1rem;
-    right: 1.5rem;
-    left: 1.5rem;
-    width: calc(100% - 3rem);
+    right: calc(1rem + 60px);
+    left: 1rem;
+    width: calc(100% - 2rem - 60px);
     text-align: center;
     padding: 1.25rem;
     font-size: 1.1rem;
