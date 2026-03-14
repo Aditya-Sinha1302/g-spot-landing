@@ -21,6 +21,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -116,10 +120,27 @@ nav {
   font-size: 0.9rem;
   margin-left: 2rem;
   transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 5px var(--accent-color);
 }
 
 .nav-links a:hover {
   color: var(--accent-color);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 /* Hero Section */
