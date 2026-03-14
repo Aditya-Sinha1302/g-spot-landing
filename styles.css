@@ -764,14 +764,18 @@ nav {
   width: 100%;
 }
 
+.review-ticker-track {
+  display: inline-flex;
+  width: max-content;
+  animation: review-txt-marquee 35s linear infinite;
+}
+
 .review-ticker-content {
-  display: inline-block;
   white-space: nowrap;
   font-family: 'Courier New', Courier, monospace;
   font-size: 1.25rem;
   font-weight: 900;
   color: #000000;
-  animation: review-txt-marquee 35s linear infinite;
 }
 
 @keyframes review-txt-marquee {
