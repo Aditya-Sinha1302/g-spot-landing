@@ -187,13 +187,25 @@ nav {
   right: 0;
 }
 
+.close-drawer-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 3rem;
+  color: var(--text-color);
+  cursor: pointer;
+  z-index: 1002;
+  line-height: 1;
+}
+
 .drawer-link {
   font-family: var(--font-heading);
   font-size: 2.5rem;
   color: var(--text-color);
   text-decoration: none;
   text-transform: uppercase;
-  margin: 1.5rem 0;
+  margin: 0;
+  padding: 1rem 0; /* py-4 vertical spacing */
   min-height: 48px;
   display: flex;
   align-items: center;
@@ -232,12 +244,13 @@ nav {
 }
 
 .hero-headline {
-  font-size: clamp(4rem, 15vw, 12rem);
+  font-size: clamp(2.5rem, 8vw, 6rem); /* Reduced aggressive scaling so it fits mobile */
   text-shadow: 4px 4px 0px rgba(184, 41, 255, 0.3);
   position: relative;
   z-index: 2;
   mix-blend-mode: difference;
   text-wrap: balance;
+  line-height: 0.9;
 }
 
 .hero-sub {
@@ -554,18 +567,18 @@ nav {
 
 @media (max-width: 768px) {
   .whatsapp-cta {
-    bottom: 1rem;
-    right: 1rem;
-    width: 50px;
-    height: 50px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 60px; /* Kept large for thumb */
+    height: 60px;
   }
   .sticky-notify {
-    bottom: 1rem;
-    right: calc(1rem + 60px);
-    left: 1rem;
-    width: calc(100% - 2rem - 60px);
+    bottom: 1.5rem;
+    right: calc(1.5rem + 75px); /* Ensure it clears the 60px wa button + gap */
+    left: 1.5rem;
+    width: calc(100% - 3rem - 75px);
     text-align: center;
-    padding: 1.25rem;
+    padding: 1.25rem 1rem;
     font-size: 1.1rem;
   }
 }

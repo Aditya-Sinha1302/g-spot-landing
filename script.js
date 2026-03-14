@@ -64,13 +64,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mobile Hamburger Menu Logic
   const hamburgerBtn = document.getElementById('hamburger-btn');
+  const closeBtn = document.getElementById('close-drawer-btn');
   const mobileDrawer = document.getElementById('mobile-drawer');
   const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-wa');
 
   if (hamburgerBtn && mobileDrawer) {
     hamburgerBtn.addEventListener('click', () => {
-      mobileDrawer.classList.toggle('open');
+      mobileDrawer.classList.add('open');
     });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        mobileDrawer.classList.remove('open');
+      });
+    }
 
     // Close drawer when a link is clicked
     drawerLinks.forEach(link => {
