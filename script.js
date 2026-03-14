@@ -19,30 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const animatedElements = document.querySelectorAll('.scroll-reveal');
   animatedElements.forEach(el => observer.observe(el));
   
-  // Sticky button interaction
-  const notifyBtn = document.querySelector('.sticky-notify');
-  if (notifyBtn) {
-    notifyBtn.addEventListener('click', () => {
-      notifyBtn.textContent = 'YOU ARE ON THE LIST';
-      notifyBtn.style.backgroundColor = '#FFFFFF';
-      notifyBtn.style.color = '#050505';
-      
-      setTimeout(() => {
-        notifyBtn.textContent = 'NOTIFY ME';
-        notifyBtn.style.backgroundColor = '';
-        notifyBtn.style.color = '';
-      }, 3000);
-    });
-  }
-
   // Countdown Timer Logic
   const countdownEl = document.getElementById('countdown-timer');
   if (countdownEl) {
-    // Set target date 2 days, 14 hours, 30 mins from now
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 2);
-    targetDate.setHours(targetDate.getHours() + 14);
-    targetDate.setMinutes(targetDate.getMinutes() + 30);
+    // Set target exactly 24 hours from page load so it starts at 23:59:59
+    const targetDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
 
     setInterval(() => {
       const now = new Date();
@@ -58,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      countdownEl.textContent = `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      countdownEl.textContent = `00:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }, 1000);
   }
 
