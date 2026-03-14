@@ -61,4 +61,22 @@ document.addEventListener('DOMContentLoaded', () => {
       countdownEl.textContent = `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }, 1000);
   }
+
+  // Mobile Hamburger Menu Logic
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-wa');
+
+  if (hamburgerBtn && mobileDrawer) {
+    hamburgerBtn.addEventListener('click', () => {
+      mobileDrawer.classList.toggle('open');
+    });
+
+    // Close drawer when a link is clicked
+    drawerLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.remove('open');
+      });
+    });
+  }
 });
