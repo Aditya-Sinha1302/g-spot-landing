@@ -1,1 +1,1 @@
-Clothing website for store in store(gspot).
+Clothing website for store for store(gspot).
